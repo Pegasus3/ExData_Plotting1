@@ -1,6 +1,6 @@
  ## ===========================##
  ##      Exploratiry Data      ##
- ##        plot1.R             ##
+ ##        plot3.R             ##
  ##============================##
 
  ## Read the data from "household_power_consumption.txt"
@@ -36,8 +36,11 @@
  ## Convert the Date variable to Date format.
  tidy$Date <- as.Date(tidy$Date, format="%d/%m/%Y")
 
- ## Plot 1
+ ## Plot 3
 
- png("plot1.png", width=480, height=480)
- hist(tidy$Global_active_power, col="red", main="Global Active Power", xlab="Global Active Power (kilowatts)")
+ png("plot3.png", width=480, height=480)
+ plot(tidy$Time, tidy$Sub_metering_1, type="l", ylab="Energy Submetering", xlab="")
+ lines(tidy$Time, tidy$Sub_metering_2, type="l", col="red")
+ lines(tidy$Time, tidy$Sub_metering_3, type="l", col="blue")
+ legend("topright", c("Sub_metering_1", "Sub_metering_2", "Sub_metering_3"), lty=1, lwd=2.5, col=c("black", "red", "blue"))
  dev.off()
